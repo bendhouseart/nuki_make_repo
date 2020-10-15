@@ -1,0 +1,27 @@
+---
+repo_name:
+  type: input
+  message: Choose a base name for this project
+  default: my awesome project!
+
+github_user:
+  type: input
+  message: Enter your github username
+  default: githubuser
+
+
+# steps to create and push code to a repo can be seen below
+
+# steps note you can create the repo
+create_github_repo_:
+  type: command
+  cmd: |
+    curl -u {{ nuki.github_user }} https://api.github.com/user/repos -d '{"name":"{{nuki.repo_slug}}"}'
+
+
+# push to repo
+push_to_repo_:
+  type: command
+  cmd: |
+    git remote add origin git@github.com:{{ nuki.github_user }}/{{ nuki.repo_slug }}.git
+    git push origin master

@@ -1,0 +1,2 @@
+repo_name: "{{ nuki.repo_name }}"
+repo_slug: "{{ nuki.repo_name|lower|replace(' ', '-' }}"
